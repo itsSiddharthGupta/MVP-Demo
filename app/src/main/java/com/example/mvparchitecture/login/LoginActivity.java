@@ -32,7 +32,7 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityCon
 
     @Override
     public void onSuccess(User user) {
-        startActivity(new Intent(this, ProfileActivity.class));
+        startActivity(new Intent(this, ProfileActivity.class).putExtra("email", user.getEmail()));
     }
 
     @Override

@@ -18,16 +18,16 @@ public class ProfileActivityPresenter implements ProfileActivityContract.Present
     }
 
     @Override
-    public void fetchUserDetails() {
+    public void fetchUserDetails(String email) {
         executors.execute(() -> {
-            view.onFetchSuccess(dao.getUser());
+            view.onFetchSuccess(dao.getUser(email));
         });
     }
 
     @Override
-    public void deleteUser(User user) {
+    public void deleteUser() {
         executors.execute(() -> {
-            dao.deleteUser(user);
+            dao.clearData();
         });
     }
 }

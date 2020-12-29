@@ -12,9 +12,9 @@ public interface UserDao {
     @Insert
     void saveUser(User user);
 
-    @Query("SELECT * FROM users limit 1")
-    User getUser();
+    @Query("SELECT * FROM users where users.email = :email limit 1")
+    User getUser(String email);
 
-    @Delete
-    void deleteUser(User user);
+    @Query("DELETE FROM users")
+    void clearData();
 }

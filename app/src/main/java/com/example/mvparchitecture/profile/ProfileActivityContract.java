@@ -10,7 +10,7 @@ public interface ProfileActivityContract {
     }
 
     interface Presenter {
-        void fetchUserDetails();
-        void deleteUser(User user);
+        void fetchUserDetails(String email);
+        void deleteUser();
     }
 }

@@ -22,9 +22,10 @@ public class ProfileActivity extends AppCompatActivity implements ProfileActivit
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_profile);
+        String email = getIntent().getExtras().getString("email");
         UserDao dao = AppDatabase.getInstance(this).getUserDao();
         presenter = new ProfileActivityPresenter(this, dao);
-        presenter.fetchUserDetails();
+        presenter.fetchUserDetails(email);
     }
 
     @Override
@@ -45,6 +46,6 @@ public class ProfileActivity extends AppCompatActivity implements ProfileActivit
     protected void onDestroy() {
         super.onDestroy();
         if (user != null)
-            presenter.deleteUser(user);
+            presenter.deleteUser();
     }
 }
